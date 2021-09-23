@@ -31,16 +31,16 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(400, 600)
+    createCanvas(400, 800)
     background(182, 183, 184)
     frameRate(15)
     for(let i = 0; i < numImages; i ++ ){
-        imgs[i] = img.get((i%14) * 71 - 10, 5 + (89 * Math.floor(i/14)), 180, 180)
+        imgs[i] = img.get((i%14) * 71.1 - 10, 5 + (89 * Math.floor(i/14)), 180, 180)
     }
 }
 
 function draw(){
-    image(imgs[counter%numImages], -60, -500, 1000, 1000)
+    image(imgs[counter%numImages], -60, -300, 1000, 1000)
     counter++
 	hcount = counter % 42;
 	console.log(hcount)

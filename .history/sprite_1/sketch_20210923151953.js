@@ -23,25 +23,22 @@ const Stanley = {
 let img
 let imgs = []
 let counter = 0
-let hcount = 0;
-const numImages = 42
+const numImages = 3
 
 function preload(){
     img = loadImage('characters.png')
 }
 
 function setup(){
-    createCanvas(400, 600)
+    createCanvas(1000, 1000)
     background(182, 183, 184)
-    frameRate(15)
+    frameRate(5)
     for(let i = 0; i < numImages; i ++ ){
-        imgs[i] = img.get((i%14) * 71 - 10, 5 + (89 * Math.floor(i/14)), 180, 180)
+        imgs[i] = img.get( i * 20 + 30, 0, 500, 500)
     }
 }
 
 function draw(){
-    image(imgs[counter%numImages], -60, -500, 1000, 1000)
-    counter++
-	hcount = counter % 42;
-	console.log(hcount)
+    image(imgs[counter%numImages], 400, 400, 300, 300)
+    counter ++
 }

@@ -31,7 +31,7 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(400, 600)
+    createCanvas(400, 500)
     background(182, 183, 184)
     frameRate(15)
     for(let i = 0; i < numImages; i ++ ){

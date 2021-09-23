@@ -40,7 +40,7 @@ function setup(){
 }
 
 function draw(){
-    image(imgs[counter%numImages], -60, -500, 1000, 1000)
+    image(imgs[counter%numImages], -60, -400, 1000, 1000)
     counter++
 	hcount = counter % 42;
 	console.log(hcount)
