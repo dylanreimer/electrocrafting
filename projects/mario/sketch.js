@@ -1,70 +1,62 @@
-// const backgroundColor = [230,220,190];
-myCanvas = {
-    width: 600,
-    height: 600
-};
-backgroundColor = [205, 30, 94];
-const sounds = Array.from({
-    length: 6
-});
-let dist = 1;
-
-let detailX;
-let detailY;
-
-let detailA;
-let detailB;
-
-let a = 1;
-let b = 1;
-
-let total = 75;
-
-let offset = 0;
-
-function setup() {
-    createCanvas(myCanvas.width, myCanvas.height, WEBGL);
-    background(backgroundColor);
-
-    detailX = createSlider(3, 24, 20, 1);
-    detailX.position((myCanvas.width - 400) / 2, height + 5);
-    detailX.style('width', '400px');
-
-    detailY = createSlider(3, 24, 10, 1);
-    detailY.position((myCanvas.width - 400) / 2, height + 30);
-    detailY.style('width', '400px');
-
-    detailA = createSlider(15, 170, 100, 1);
-    detailA.position(myCanvas.width - 185, (myCanvas.height) / 2);
-    detailA.style('width', '400px');
-    detailA.style("transform", "rotate(270deg)");
-
-    detailB = createSlider(15, 170, 40, 1);
-    detailB.position(myCanvas.width - 185 + 25, (myCanvas.height) / 2);
-    detailB.style('width', '400px');
-    detailB.style("transform", "rotate(270deg)");
-}
+let objectImg, marioImg, goombaImg
+let images 
+let themeSong, jumpSound, coinSound
+let sounds 
+let game
 
 
-function draw() {
+function preload(){
+    objectsImg = loadImage('assets/items-objects.png')
+    marioImg = loadImage('assets/mario-use.png')
+    goombaImg = loadImage('assets/goombas.png')
+    themeSong = loadSound('assets/sounds/Mario-theme-song.mp3'), 
+    coinSound = loadSound('assets/sounds/Mario-coin-sound.mp3'),
+    jumpSound = loadSound('assets/sounds/Mario-jump-sound.mp3'),
+    dieSound = loadSound('assets/sounds/mario-dies.mp3')
 
-    background(backgroundColor);
-    drawTorus(0.01);
+    images = {
+        objectsImg,
+        marioImg, 
+        goombaImg
+    }
 
-    console.log("X: %d, Y: %d", mouseX, mouseY);
-    console.log("W: %d, H: %d", myCanvas.width, myCanvas.height);
-}
-
-function mouseClicked() {
-    if ((mouseX < myCanvas.width) & (mouseY < myCanvas.height)) {
-        backgroundColor = [random(20, 235), random(20, 235), random(20, 235)];
+    sounds = {
+        themeSong, 
+        jumpSound, 
+        coinSound,
     }
 }
 
-function drawTorus(rotation) {
-    stroke(180, 180, 180);
-    fill(200, 200, 200);
-    rotateX(frameCount * rotation);
-    rotateY(frameCount * rotation);
-    torus(detailA.value(), detailB.value(), detailX.value(), detailY.value());
+function setup(){
+    createCanvas(1000, 600)
+    background(95, 138, 245)
+    frameRate(15)
+    game = new Game(images, sounds)
+
 }
+
+function draw(){
+    checkKeys()
+    game.update()
+    game.render()    
+}
+
+function checkKeys(){
+    if(keyIsDown(UP_ARROW)){
+        game.hero.jump()
+        return
+    } else if(keyIsDown(LEFT_ARROW)){
+        game.hero.runLeft()
+        return
+    } else if(keyIsDown(RIGHT_ARROW)){
+        game.hero.runRight()
+        return
+    }
+}
+
+function keyReleased(){
+    if(keyCode === UP_ARROW){
+        game.hero.clearJump()
+    }
+}
+
