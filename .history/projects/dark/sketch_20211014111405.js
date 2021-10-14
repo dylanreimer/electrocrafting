@@ -138,13 +138,13 @@ function getTile(x, y, terrainScales) {
 
 
 
-      // if ((i == 0 || i == 3) 
-      // && spriteX == x*tileSize+(tileSize/2) && spriteY == y*tileSize+(tileSize/2)) {
-      //   // && false) {
+      if ((i == 0 || i == 3) 
+      && spriteX == x*tileSize+(tileSize/2) && spriteY == y*tileSize+(tileSize/2)) {
+        // && false) {
           
-      //   music.stop()
-      //   resetSketch();
-      // }
+        music.stop()
+        resetSketch();
+      }
 
       return images[i][rounds];
     }

@@ -135,16 +135,11 @@ function getTile(x, y, terrainScales) {
     let terrainScale = scales[i];
     if (v <= terrainScale) {   
       // collision test
-
-
-
-      // if ((i == 0 || i == 3) 
-      // && spriteX == x*tileSize+(tileSize/2) && spriteY == y*tileSize+(tileSize/2)) {
-      //   // && false) {
-          
-      //   music.stop()
-      //   resetSketch();
-      // }
+      if ((i == 0 || i == 3) 
+      && dist(spriteX, spriteY, x*tileSize+(tileSize/2), y*tileSize+(tileSize/2)) < (spriteR)) {
+        music.stop()
+        resetSketch();
+      }
 
       return images[i][rounds];
     }
