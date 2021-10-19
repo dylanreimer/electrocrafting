@@ -25,7 +25,7 @@ function setup() {
           
           c = map(angle, -2, 2, 0, 50); 
           
-          pendulums[i][j] = new Pendulum(i*((canvasWidth+80)/cols), j*((canvasHeight+80)/rows), c/0.8);
+          pendulums[i][j] = new Pendulum(i*(canvasWidth/cols)+80, j*(canvasHeight/rows), c/0.8);
         }
     }
 
