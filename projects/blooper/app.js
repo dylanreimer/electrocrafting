@@ -91,6 +91,7 @@ function runTone() {
 
   const keys = new Tone.PolySynth().toDestination();
   keys.volume.value = -5;
+  keys.maxPolyphony = 16;
   const trem = new Tone.Tremolo(4, 0.4).toDestination().start();
   keys.connect(trem);
   const pp = new Tone.PingPongDelay("4n", 0.2).toDestination();
@@ -500,7 +501,7 @@ class Note {
 
         let framediff = (frame - this.initial) % (4 * 60 * fr/bpm);
 
-        let distRad = map(framediff, 0, 50, 0, this.r * 8);
+        let distRad = map(framediff, 0, 50, 0, canvasHeight / 5);
 
         noStroke()
         fill(this.color);
