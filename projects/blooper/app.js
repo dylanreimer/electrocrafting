@@ -288,7 +288,7 @@ function keyPressed() {
   if (keyCode === 87) {
     console.log("pressed: w");
 
-    addNote(1);
+    // addNote(1);
 
   }
   if (keyCode === 83) {
@@ -300,7 +300,7 @@ function keyPressed() {
   if (keyCode === 69) {
     console.log("pressed: e");
     
-    addNote(3);
+    // addNote(3);
 
   }
   if (keyCode === 68) {
@@ -318,7 +318,7 @@ function keyPressed() {
   if (keyCode === 84) {
     console.log("pressed: t");
 
-    addNote(6);
+    // addNote(6);
 
   }
   if (keyCode === 71) {
@@ -330,7 +330,7 @@ function keyPressed() {
   if (keyCode === 89) {
     console.log("pressed: y");
 
-    addNote(8);
+    // addNote(8);
 
   }
   if (keyCode === 72) {
@@ -342,7 +342,7 @@ function keyPressed() {
   if (keyCode === 85) {
     console.log("pressed: u");
 
-    addNote(10);
+    // addNote(10);
 
   }
   if (keyCode === 74) {
