@@ -24,6 +24,7 @@ let frame;
 let pause;
 let quant;
 let controls;
+let extras; 
 
 let registerMargin;
 
@@ -37,6 +38,10 @@ let colors = [[155, 126, 222],
 let bassScale = ['C1', 'Db1', 'D1', 'Eb1', 'E1', 'G1', 'Gb1', 'A1', 'Ab1', 'C2', 'Bb1', 'D2', 'E2', 'G2'];
 let keysScale = ['C3', 'Db3', 'D3', 'Eb3', 'E3', 'G3', 'Gb3', 'A3', 'Ab3', 'C4', 'Bb3', 'D4', 'E4', 'G4'];
 let leadScale = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'G4', 'Gb4', 'A4', 'Ab4', 'C5', 'Bb4', 'D5', 'E5', 'G5'];
+
+// let bassScale = ['C1', 'D1', 'Eb1', 'F1', 'G1', 'Ab1', 'Bb1', 'C2', 'D2', 'Eb2', 'F2', 'G2', 'Ab2', 'Bb2'];
+// let keysScale = ['C3', 'D3', 'Eb3', 'F3', 'G3', 'Ab3', 'Bb3', 'C4', 'D4', 'Eb4', 'F4', 'G4', 'Ab4', 'Bb4'];
+// let leadScale = ['C4', 'D4', 'Eb4', 'F4', 'G4', 'Ab4', 'Bb4', 'C5', 'A5', 'Eb5', 'F5', 'G5', 'Ab5', 'Bb5'];
 
 let scales = [bassScale, keysScale, leadScale];
 
@@ -70,7 +75,7 @@ function setup() {
 
     registerMargin = 25;
 
-
+    extras = false; 
 }
 
 function runTone() {
@@ -189,8 +194,10 @@ function draw() {
       playline.update();
       playline.display();
 
-      // drawTempo();
-
+      if (extras) {
+        drawTempo();
+      }
+      
     }
 
   }
@@ -288,7 +295,7 @@ function keyPressed() {
   if (keyCode === 87) {
     console.log("pressed: w");
 
-    // addNote(1);
+    addNote(1);
 
   }
   if (keyCode === 83) {
@@ -300,7 +307,7 @@ function keyPressed() {
   if (keyCode === 69) {
     console.log("pressed: e");
     
-    // addNote(3);
+    addNote(3);
 
   }
   if (keyCode === 68) {
@@ -318,7 +325,7 @@ function keyPressed() {
   if (keyCode === 84) {
     console.log("pressed: t");
 
-    // addNote(6);
+    addNote(6);
 
   }
   if (keyCode === 71) {
@@ -330,7 +337,7 @@ function keyPressed() {
   if (keyCode === 89) {
     console.log("pressed: y");
 
-    // addNote(8);
+    addNote(8);
 
   }
   if (keyCode === 72) {
@@ -342,7 +349,7 @@ function keyPressed() {
   if (keyCode === 85) {
     console.log("pressed: u");
 
-    // addNote(10);
+    addNote(10);
 
   }
   if (keyCode === 74) {
@@ -452,7 +459,10 @@ class Playline {
 
       display() {
         stroke(255)
-        // line(0, this.y, canvasWidth, this.y);
+        if (extras) {
+          line(0, this.y, canvasWidth, this.y);
+        }
+        
       }
 
       toggle() {
